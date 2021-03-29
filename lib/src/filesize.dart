@@ -6,7 +6,7 @@ String filesize(dynamic size, [int round = 2]) {
    * the optional parameter [round] specifies the number 
    * of digits after comma/point (default is 2)
    */
-  int divider = 1024;
+  int divider = 1000;
   int _size;
   try {
     _size = int.parse(size.toString());
@@ -42,8 +42,7 @@ String filesize(dynamic size, [int round = 2]) {
     return "${(_size / divider / divider / divider).toStringAsFixed(round)} GB";
   }
 
-  if (_size < divider * divider * divider * divider * divider &&
-      _size % divider == 0) {
+  if (_size < divider * divider * divider * divider * divider && _size % divider == 0) {
     num r = _size / divider / divider / divider / divider;
     return "${r.toStringAsFixed(0)} TB";
   }
@@ -53,8 +52,7 @@ String filesize(dynamic size, [int round = 2]) {
     return "${r.toStringAsFixed(round)} TB";
   }
 
-  if (_size < divider * divider * divider * divider * divider * divider &&
-      _size % divider == 0) {
+  if (_size < divider * divider * divider * divider * divider * divider && _size % divider == 0) {
     num r = _size / divider / divider / divider / divider / divider;
     return "${r.toStringAsFixed(0)} PB";
   } else {
